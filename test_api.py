@@ -1,4 +1,7 @@
 import requests
+from app import update_task
+
+
 
 
 TEST_URL = 'http://127.0.0.1:5000/api/tasks'
@@ -25,3 +28,12 @@ def test_create_task():
     assert response.status_code == 201
     assert 'title' in response.json()
     assert response.json()['title'] == task_data['title']
+
+
+def test_update_task():
+    task_id = 1
+    updated_task_data = {'title': 'Updated Task Title'}
+    response = requests.put(f'{TEST_URL}/{task_id}', json=updated_task_data)
+    assert response.status_code in [200, 404]
+    if response.status_code == 200:
+        assert response.json()['message'] == 'Task updated successfully'

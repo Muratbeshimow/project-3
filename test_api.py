@@ -11,7 +11,7 @@ def test_get_tasks():
     response = requests.get(TEST_URL)
     assert response.status_code == 200
     data = response.json()
-    assert isinstance(data, list)
+    assert isinstance(data,list)
 
 
 def test_get_task_by_id():

@@ -12,6 +12,11 @@ def get_tasks():
     print(tasks)
     return jsonify(tasks)
 
+@app.route('/api/tasks')
+def get_task():
+    tasks = db.query('SELECT * from tasks')
+    print(tasks)
+    return jsonify(tasks)
 
 # SHOW TASK BY ID
 @app.route('/api/tasks/<int:id>', methods=['GET'])

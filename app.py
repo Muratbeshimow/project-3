@@ -1,14 +1,12 @@
-from flask import Flask, jsonify, request, send_file
+from flask import Flask, jsonify, request
 import db
 
 app = Flask(__name__)
 
-@app.route('/')
-def home():
-    return send_file("index.html")
+
    
 # SHOW ALL TASKS
-@app.route('/api/tasks')
+@app.route('/')
 def get_tasks():
     tasks = db.query('SELECT * from tasks')
     print(tasks)
